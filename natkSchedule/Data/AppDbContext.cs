@@ -1,6 +1,5 @@
-﻿using CollegeSchedule.Models;
+﻿using natkSchedule.Models;
 using Microsoft.EntityFrameworkCore;
-using natkSchedule.Models;
 
 namespace natkSchedule.Data
 {
