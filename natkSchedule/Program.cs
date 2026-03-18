@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using natkSchedule.Data;
+using natkSchedule.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,9 @@ var connectionString = $"Host={Environment.GetEnvironmentVariable("DB_HOST")};" 
 
 $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")}";
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+
+builder.Services.AddScoped<IScheduleService, ScheduleService>();
 
 // Add services to the container.
 
