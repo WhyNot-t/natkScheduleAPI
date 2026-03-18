@@ -1,0 +1,6 @@
+@natkSchedule_HostAddress = http://localhost:5285
+
+GET {{natkSchedule_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
