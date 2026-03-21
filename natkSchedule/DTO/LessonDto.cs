@@ -12,7 +12,6 @@ namespace natkSchedule.DTO
         public string Classroom { get; set; } = null!;
         public string Building { get; set; } = null!;
         public string Address { get; set; } = null!;
-        public Dictionary<LessonGroupPart, LessonPartDto?> GroupParts { get; set; } =
-new();
+        public Dictionary<LessonGroupPart, LessonPartDto?> GroupParts { get; set; } = new();
     }
 }

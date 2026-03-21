@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using natkSchedule.Data;
 using natkSchedule.Middlewares;
 using natkSchedule.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +11,8 @@ var connectionString = $"Host={Environment.GetEnvironmentVariable("DB_HOST")};" 
                        $"Port={Environment.GetEnvironmentVariable("DB_PORT")};" +
                        $"Database={Environment.GetEnvironmentVariable("DB_NAME")};" +
                        $"Username={Environment.GetEnvironmentVariable("DB_USER")};" +
-
-$"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")}";
+                       $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")}";
+Console.WriteLine($"Connection: {connectionString}");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
@@ -37,8 +37,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseRouting();
+app.UseAuthorization();
 
 app.MapControllers();
 
