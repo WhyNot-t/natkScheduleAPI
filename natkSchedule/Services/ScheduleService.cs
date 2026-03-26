@@ -22,6 +22,20 @@ namespace natkSchedule.Services
             return BuildScheduleDto(startDate, endDate, schedules);
         }
 
+        public async Task<List<StudentGroupDto>> GetAllGroups()
+        {
+            return await _db.StudentGroups
+                .AsNoTracking()
+                .OrderBy(g => g.GroupName)
+                .Select(g => new StudentGroupDto
+                {
+                    GroupId = g.GroupId,
+                    GroupName = g.GroupName,
+                    Course = g.Course
+                })
+                .ToListAsync();
+        }
+
         private static void ValidateDates(DateTime start, DateTime end)
         {
             if (start > end)

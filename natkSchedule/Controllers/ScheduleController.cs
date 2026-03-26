@@ -10,9 +10,16 @@ namespace natkSchedule.Controllers
     public class ScheduleController : ControllerBase
     {
         private readonly IScheduleService _service;
-        public ScheduleController(IScheduleService service, AppDbContext db)
+        public ScheduleController(IScheduleService service)
         {
             _service = service;
+        }
+
+        [HttpGet("groups")]
+        public async Task<IActionResult> GetGroups()
+        {
+            var groups = await _service.GetAllGroups();
+            return Ok(groups);
         }
 
         [HttpGet("group/{groupName}")]
